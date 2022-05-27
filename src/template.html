@@ -6,7 +6,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <div id="tach_container">
+    <div class="screen">
       <div class="tach">
         <image class="" src="./assets/images/tach-background.png" />
         <image id="tach_needle" src="./assets/images/needle.png" />
@@ -22,7 +22,7 @@
       padding: 0;
       margin: 0;
       overflow: hidden;
-      background: transparent;
+      background: black;
     }
     .tach > img {
       position: absolute;
@@ -32,14 +32,40 @@
       height: 100%;
     }
     .tach {
+      left: 113px;
+      top: 44px;
+      transform: rotateZ(90deg);
       position: relative;
-      width: 323px;
-      height: 318px;
+      width: 551px;
+      height: 551px;
     }
     #tach_needle {
       will-change: transform;
       transition: transform 0.1s;
     }
+    
+    .screen {
+      width: 800px;
+      height:600px;
+    }
+/*
 
+
+// inches to pixel: 4.69" == 600px
+// 4.30/4.69 = x/600 
+// x = 4.30/4.69 * 600
+// x = 550.106 pixels
+
+// 0.8" from top of the bezel
+// 0.8" to pixels: 0.8/4.69 = x/800
+// x = 0.8/4.69 * 800
+// 136.46 pixels
+
+// 0.34" to pixels: 
+// 0.34/4.69 = x/600
+// x = 0.34/4.69 * 600
+// 43.49
+
+*/
   </style>
 </html>

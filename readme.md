@@ -2,6 +2,8 @@
 * Just something to get you up and running
 * Includes all the linkage to the [AutoDashBackEnd](https://github.com/Mathews2115/AutoDashBackEnd) 
 * Tach display
+* tach when not connected will drop the needle back before 0
+
 
 # How to use 
 ## on desktop
