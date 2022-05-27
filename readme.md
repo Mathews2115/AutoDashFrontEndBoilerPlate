@@ -1,7 +1,17 @@
 # Boiler Plate
 * Just something to get you up and running
-* Includes all the linkage to the backend
-* Tach display 
+* Includes all the linkage to the AutoDashBackEnd 
+* Tach display
+
+# How to use 
+## on desktop
+1. `npm run start` - this will build the assets and launch a web browser
+2. if you want live data, on AutoDashBack end, run `npm run init_and_start_vcan_server`
+3. then run `canplayer vcan0=can0  -I ./can_dumps/candump-racepack-running.log -li`
+   
+## on pi
+1. `npm run build` - this builds the assets and stores them in the `/dist`
+2. You'll need the AutoDashBackEnd - copy the contents of this `/dist` folder and paste it into the `/dist` folder of the AutoDashBackEnd on the pi
   
 # Quick How-To Raspberry Pi 4 Digital Dashboard setup.
 

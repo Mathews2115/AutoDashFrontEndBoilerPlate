@@ -6,6 +6,13 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <div id="tach_container">
+      <div class="tach">
+        <image class="" src="./assets/images/tach-background.png" />
+        <image id="tach_needle" src="./assets/images/needle.png" />
+        <image class="cap" src="./assets/images/cap.png" />
+      </div>
+    </div>
   </body>
   <style>
     html,
@@ -17,12 +24,22 @@
       overflow: hidden;
       background: transparent;
     }
-
-    canvas {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
+    .tach > img {
       position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
+    .tach {
+      position: relative;
+      width: 323px;
+      height: 318px;
+    }
+    #tach_needle {
+      will-change: transform;
+      transition: transform 0.1s;
+    }
+
   </style>
 </html>

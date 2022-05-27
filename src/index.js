@@ -1,10 +1,12 @@
 "use strict";
-
+import { DATA_KEYS, WARNING_KEYS } from "./js/common/dataMap";
+import tachometer from "./js/tachometer";
 const dataWorker = new Worker(
   new URL("./js/comms/drawDataWorker.js", import.meta.url)
 );
 let updateData = []; // TODO: make this a typed array?  try transfer data in worker?
 let readyForData = true;
+let isCommError = false; // True if there is an issue communicating with ECU server 
 
 const tick = () => {
   if (readyForData) {
@@ -14,6 +16,14 @@ const tick = () => {
     });
     readyForData = false;
   }
+
+  // determine if we are still in communication with our server
+  isCommError = getWarningLight(WARNING_KEYS.COMM_ERROR);
+  
+  // update stuff
+  tachometer.update(updateData[DATA_KEYS.RPM], isCommError);
+
+  // request another update frame
   requestAnimationFrame(tick);
 };
 
@@ -21,9 +31,16 @@ const initializeApp = () => {
   // start worker thread! (this lil thing gets the data that is sent from the AutoDashBackEnd)
   dataWorker.postMessage({ msg: "start" });
 
-  // hook up update loop (responsible for updating the graphics!)
+  // start up our tach
+  tachometer.initialize();
+
+  // start up update loop (responsible for updating the graphic positions!)
   tick();
 };
+
+const getWarningLight = (warningKey) => {
+  return !!(updateData[DATA_KEYS.WARNINGS] & (128 >> warningKey  % 8))
+}
 
 dataWorker.onmessage = (event) => {
   switch (event.data.msg) {
@@ -34,13 +51,11 @@ dataWorker.onmessage = (event) => {
         readyForData = true;
       } catch (error) {
         console.error(error);
-        // put state to error?
       }
 
       break;
     case "error":
-      // put to state error?
-      // dash.errorOccured();
+      // if you want some error handling
       break;
   }
 };
