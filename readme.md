@@ -5,6 +5,7 @@
 
 # How to use 
 ## on desktop
+1. `yarn` - build everything
 1. `npm run start` - this will build the assets and launch a web browser
 2. if you want live data, on [AutoDashBackEnd](https://github.com/Mathews2115/AutoDashBackEnd) end, run `npm run init_and_start_vcan_server`
 3. then run `canplayer vcan0=can0  -I ./can_dumps/candump-racepack-running.log -li`
