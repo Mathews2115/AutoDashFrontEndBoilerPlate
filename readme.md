@@ -11,7 +11,7 @@
 3. then run `canplayer vcan0=can0  -I ./can_dumps/candump-racepack-running.log -li`
    
 ## on pi
-1. `npm run build` - this builds the assets and stores them in the `/dist`
+1. `npm run build` - do this on your computer; this builds the assets and stores them in the `/dist`
 2. You'll need the [AutoDashBackEnd](https://github.com/Mathews2115/AutoDashBackEnd) - copy the contents of this `/dist` folder and paste it into the `/dist` folder of the AutoDashBackEnd on the pi
   
 # Quick How-To Raspberry Pi 4 Digital Dashboard setup.
