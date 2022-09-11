@@ -1,6 +1,7 @@
 "use strict";
 import { DATA_MAP, WARNING_KEYS } from "./js/common/dataMap";
 import tachometer from "./js/tachometer";
+import battery from "./js/battery";
 const dataWorker = new Worker(
   new URL("./js/comms/drawDataWorker.js", import.meta.url)
 );
@@ -23,6 +24,7 @@ const tick = () => {
   
   // update stuff
   tachometer.update(updateData[DATA_MAP.RPM.id], isCommError);
+  battery.update(updateData[DATA_MAP.HV_BATT_VOLTAGE.id], isCommError);
 
   // request another update frame
   requestAnimationFrame(tick);
@@ -34,6 +36,7 @@ const initializeApp = () => {
 
   // start up our tach
   tachometer.initialize();
+  battery.initialize();
 
   // start up update loop (responsible for updating the graphic positions!)
   tick();

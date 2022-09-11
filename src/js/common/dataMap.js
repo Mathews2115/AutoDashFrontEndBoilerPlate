@@ -27,11 +27,11 @@ export const TYPES = {
  * @typedef {Object.<string, DataMapEntry>} DataKeys
  */
 
-export const DATA_MAP = {
+ export const DATA_MAP = {
   // Data From CAN BUS
   PEDAL_POSITION: { id: keygen(), byteType: TYPES.INT8 },  // xxx percent
   RPM: { id: keygen(), byteType: TYPES.INT16 }, // units 1 === 1 RPM,  xx,xxx
-  // RTC: { id: keygen(),byteType: TYPES.FOUR_BYTES }, // RTC clock = not used or defined yet
+  // RTC: { id: keygen(), byteType: TYPES.FOUR_BYTES }, // RTC clock = not used or defined yet
   FUEL_PRESSURE: { id: keygen(), byteType: TYPES.INT16 }, // units 1 === 1 psi
   SPEEDO: { id: keygen(), byteType: TYPES.INT16 }, // Holley Speed = units 1 === 1 mph
   INJECTOR_PULSEWIDTH: { id: keygen(), byteType: TYPES.INT16 },
@@ -41,9 +41,9 @@ export const DATA_MAP = {
   AFR_LEFT: { id: keygen(), byteType: TYPES.FLOAT }, // xx.x A/F
   CLOSED_LOOP_COMP: { id: keygen(), byteType: TYPES.INT16 },
   AFR_RIGHT: { id: keygen(), byteType: TYPES.FLOAT }, // xx.x A/F
-  TARGET_AFR: { id: keygen(), byteType: TYPES.FLOAT }, // xx.x A/F
+  TARGET_AFR:{ id: keygen(), byteType: TYPES.FLOAT }, // xx.x A/F
   AFR_AVERAGE: { id: keygen(), byteType: TYPES.FLOAT }, // xx.x A/F
-  IGNITION_TIMING: { id: keygen(), byteType: TYPES.FLOAT }, // units 1 == 1 degree
+  IGNITION_TIMING:{ id: keygen(), byteType: TYPES.FLOAT }, // units 1 == 1 degree
   MAP: { id: keygen(), byteType: TYPES.INT16 }, // units 1 === 1 (PRESSURE_TYPE) (defaults to kpa if not set)
   KNOCK_RETARD: { id: keygen(), byteType: TYPES.INT16 },
   MAT: { id: keygen(), byteType: TYPES.INT16 }, //manifold temp 
@@ -54,7 +54,7 @@ export const DATA_MAP = {
   BATT_VOLTAGE: { id: keygen(), byteType: TYPES.FLOAT }, // xx.x volts
 
   // Data from GPS
-  ODOMETER: { id: keygen(), byteType: TYPES.INT16 },// Current Miles Odometer
+  ODOMETER:{ id: keygen(), byteType: TYPES.INT16 },// Current Miles Odometer
   TRIP_ODOMETER: { id: keygen(), byteType: TYPES.INT16 }, //
   GPS_SPEEED: { id: keygen(), byteType: TYPES.INT16 }, // Speed MPH
 
@@ -72,6 +72,7 @@ export const DATA_MAP = {
   TEMP_TYPE: { id: keygen(), byteType: TYPES.INT8 }, // 0 for F, 1 for C
 
   ///
+  HV_BATT_VOLTAGE: { id: keygen(), byteType: TYPES.FLOAT }, // xx.x volts
   SOME_NEW_VALUE: { id: keygen(), byteType: TYPES.UINT32 },
 };
 

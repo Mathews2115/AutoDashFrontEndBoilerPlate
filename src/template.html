@@ -13,6 +13,13 @@
         <image class="cap" src="./assets/images/cap.png" />
       </div>
     </div>
+    <div id="bat_container">
+      <div class="bat">
+        <image class="" src="./assets/images/bat_gauge_320.png" />
+        <image id="bat_needle" src="./assets/images/needle.png" />
+        <image class="cap" src="./assets/images/cap.png" />
+      </div>
+    </div>
   </body>
   <style>
     html,
@@ -37,6 +44,22 @@
       height: 318px;
     }
     #tach_needle {
+      will-change: transform;
+      transition: transform 0.1s;
+    }
+    .bat > img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .bat {
+      position: relative;
+      width: 323px;
+      height: 318px;
+    }
+    #bat_needle {
       will-change: transform;
       transition: transform 0.1s;
     }
