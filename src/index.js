@@ -1,9 +1,10 @@
 "use strict";
-import { DATA_KEYS, WARNING_KEYS } from "./js/common/dataMap";
+import { DATA_MAP, WARNING_KEYS } from "./js/common/dataMap";
 import tachometer from "./js/tachometer";
 const dataWorker = new Worker(
   new URL("./js/comms/drawDataWorker.js", import.meta.url)
 );
+
 let updateData = []; // TODO: make this a typed array?  try transfer data in worker?
 let readyForData = true;
 let isCommError = false; // True if there is an issue communicating with ECU server 
@@ -21,7 +22,7 @@ const tick = () => {
   isCommError = getWarningLight(WARNING_KEYS.COMM_ERROR);
   
   // update stuff
-  tachometer.update(updateData[DATA_KEYS.RPM], isCommError);
+  tachometer.update(updateData[DATA_MAP.RPM.id], isCommError);
 
   // request another update frame
   requestAnimationFrame(tick);
@@ -39,7 +40,7 @@ const initializeApp = () => {
 };
 
 const getWarningLight = (warningKey) => {
-  return !!(updateData[DATA_KEYS.WARNINGS] & (128 >> warningKey  % 8))
+  return !!(updateData[DATA_MAP.WARNINGS.id] & (128 >> warningKey  % 8))
 }
 
 dataWorker.onmessage = (event) => {
